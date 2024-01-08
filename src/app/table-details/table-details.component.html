@@ -1,11 +1,11 @@
 <h1>
   <a [routerLink]="['/']">Home</a> &rtri; {{ file() }} &rtri;
-  {{ table()?.title }}
+  {{ tableDetails()?.title }}
 </h1>
 
-@if(table(); as table) {
-<p>title: {{ table.title }}</p>
-<p>rows: {{ table.rows }}</p>
-<p>columns: {{ table.columns }}</p>
-<p>notes: {{ table.notes }}</p>
+@if(tableDetails(); as tableDetails) {
+<p>title: {{ tableDetails.title }}</p>
+<p>rows: {{ tableDetails.rows }}</p>
+<p>columns: {{ tableDetails.columns }}</p>
+<p>notes: {{ tableDetails.notes }}</p>
 } @else { Loading... }

@@ -3,12 +3,17 @@ import {
   ResolveFn,
   RouterStateSnapshot,
 } from '@angular/router';
-import { inject } from '@angular/core';
-import { Observable, filter, take } from 'rxjs';
+import { PLATFORM_ID, inject } from '@angular/core';
+import { Observable, filter, of, take } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { isPlatformBrowser } from '@angular/common';
+import { TableFile } from '../../../types/table';
 
-export const FileListResolver: ResolveFn<FileList> = (
+export const FileListResolver: ResolveFn<TableFile[]> = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot,
   httpClient: HttpClient = inject(HttpClient)
-): Observable<FileList> => httpClient.get<FileList>('/api/files/');
+): Observable<TableFile[]> =>
+  isPlatformBrowser(inject(PLATFORM_ID))
+    ? httpClient.get<TableFile[]>('/api/files/')
+    : of([]);

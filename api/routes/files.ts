@@ -12,8 +12,6 @@ router.get('/', function (req, res, next) {
     console.error(err);
     res.sendStatus(404);
   }
-
-  res.send(readFiles());
 });
 
 export default router;

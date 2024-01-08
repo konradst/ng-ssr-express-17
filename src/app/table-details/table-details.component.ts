@@ -11,10 +11,10 @@ import { toSignal } from '@angular/core/rxjs-interop';
   styleUrl: './table-details.component.scss',
 })
 export class TableDetailsComponent {
-  private readonly route: ActivatedRoute = inject(ActivatedRoute);
-
   file = toSignal(this.route.params.pipe(map((params) => params['fileId'])));
-  table = toSignal(
+  tableDetails = toSignal(
     this.route.data.pipe(map(({ tableDetails }) => tableDetails))
   );
+
+  constructor(private route: ActivatedRoute) {}
 }

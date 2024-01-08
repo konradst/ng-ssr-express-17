@@ -11,7 +11,7 @@ import { map, tap } from 'rxjs';
   styleUrl: './file-list.component.scss',
 })
 export class FileListComponent {
-  private readonly route: ActivatedRoute = inject(ActivatedRoute);
-
   fileList = toSignal(this.route.data.pipe(map(({ fileList }) => fileList)));
+
+  constructor(private route: ActivatedRoute) {}
 }

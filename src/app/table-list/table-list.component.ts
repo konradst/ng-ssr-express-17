@@ -11,8 +11,8 @@ import { map, tap } from 'rxjs';
   styleUrl: './table-list.component.scss',
 })
 export class TableListComponent {
-  private readonly route: ActivatedRoute = inject(ActivatedRoute);
-
   file = toSignal(this.route.params.pipe(map((params) => params['fileId'])));
   tableList = toSignal(this.route.data.pipe(map(({ tableList }) => tableList)));
+
+  constructor(private route: ActivatedRoute) {}
 }
