@@ -1,6 +1,10 @@
 export interface TableFile {
-  tables: Table[];
+  name: string;
 }
+
+export type TableList = {
+  tables: Table[];
+};
 
 export interface Table {
   title: string;

@@ -1,0 +1,9 @@
+<h1><a [routerLink]="['/']">Home</a> &rtri; {{ file() }} &rtri; table list:</h1>
+
+<ul>
+  @for(table of tableList(); track table) {
+  <li>
+    <a [routerLink]="['/files/' + file() + '/tables/' + table]">{{ table }}</a>
+  </li>
+  }
+</ul>

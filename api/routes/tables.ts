@@ -1,6 +1,6 @@
 import express from 'express';
 import { readFileContentsJson } from '../utils/data-file';
-import { TableFile } from '../types/table';
+import { TableList } from '../../types/table';
 
 const router = express.Router({ mergeParams: true });
 
@@ -10,7 +10,7 @@ const router = express.Router({ mergeParams: true });
 router.get('/', function (req, res, next) {
   const fileId = (req.params as { fileId: string }).fileId;
   try {
-    const tableNames = readFileContentsJson<TableFile>(fileId)?.tables?.map(
+    const tableNames = readFileContentsJson<TableList>(fileId)?.tables?.map(
       (table) => table.title
     );
     res.send(tableNames);
@@ -28,7 +28,7 @@ router.get('/:tableId', function (req, res, next) {
   const tableId = req.params.tableId;
 
   try {
-    const table = readFileContentsJson<TableFile>(fileId)?.tables?.find(
+    const table = readFileContentsJson<TableList>(fileId)?.tables?.find(
       (table) => table.title === tableId
     );
     if (!table) {
